@@ -1,0 +1,8 @@
+##
+# "SectionMenu" element, extending the default "Menu"
+#
+prototype(Unikka.CoworkingHelmstedtDe:SectionMenu) < prototype(TYPO3.Neos.NodeTypes:Menu) {
+	attributes.class = 'section-menu'
+	sectionImageWidth = '100'
+	sectionImageHeight = '100'
+}

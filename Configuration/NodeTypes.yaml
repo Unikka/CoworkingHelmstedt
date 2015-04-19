@@ -1,0 +1,343 @@
+##
+# Adjust the "Page" node type:
+# Add two properties "layout" and "subpageLayout" to the default "Page" NodeType
+#
+'Unikka.CoworkingHelmstedtDe:Page':
+  childNodes:
+    'teaser':
+      type: 'TYPO3.Neos:ContentCollection'
+  properties:
+    'layout':
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              'default':
+                label: 'Default'
+              'landingPage':
+                label: 'Landing page'
+    'subpageLayout':
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              'default':
+                label: 'Default'
+              'landingPage':
+                label: 'Landing page'
+
+##
+# Adjust the "Headline" node type:
+# Disable "p" in the aloha format selector of the "title" property
+#
+'Unikka.CoworkingHelmstedtDe:Headline':
+  properties:
+    'title':
+      ui:
+        aloha:
+          'format':
+            'p': FALSE
+
+##
+# Adjust the "TwoColumn" node type:
+# Disable some of the layout options, override labels and set the default layout
+#
+'Unikka.CoworkingHelmstedtDe:TwoColumn':
+  properties:
+    'layout':
+      defaultValue: '6-6'
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              '50-50': ~
+              '75-25': ~
+              '25-75': ~
+              '66-33': ~
+              '33-66': ~
+              '6-6':
+                label: '50% / 50%'
+              '8-4':
+                label: '66% / 33%'
+              '4-8':
+                label: '33% / 66%'
+
+##
+# Adjust the "ThreeColumn" node type:
+# Disable some of the layout options, override labels and set the default layout
+#
+'Unikka.CoworkingHelmstedtDe:ThreeColumn':
+  properties:
+    'layout':
+      defaultValue: '4-4-4'
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              '33-33-33': ~
+              '50-25-25': ~
+              '25-50-25': ~
+              '25-25-50': ~
+              '4-4-4':
+                label: '33% / 33% / 33%'
+              '6-3-3':
+                label: '50% / 25% / 33%'
+              '3-6-3':
+                label: '25% / 50% / 25%'
+              '3-3-6':
+                label: '25% / 25% / 50%'
+
+'Unikka.CoworkingHelmstedtDe:Section':
+  superTypes: ['TYPO3.Neos.NodeTypes:Column']
+  ui:
+    label: 'Section'
+    group: 'structure'
+    inlineEditable: TRUE
+    inspector:
+      groups:
+        headline:
+          label: 'Headline'
+          position: 1
+        column:
+          label: 'Column'
+          position: 2
+  childNodes:
+    column0:
+      type: 'TYPO3.Neos:ContentCollection'
+  properties:
+    layout:
+      defaultValue: '12'
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              '12':
+                label: '100%'
+    title:
+      type: string
+      ui:
+        label: 'Title'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'headline'
+    header:
+      type: string
+      defaultValue: 'Headline'
+      ui:
+        inlineEditable: TRUE
+        label: 'Header'
+        inspector:
+          group: 'headline'
+    subheader:
+      type: string
+      defaultValue: 'Subheader'
+      ui:
+        label: 'Line Two'
+        inlineEditable: TRUE
+        inspector:
+          group: 'headline'
+    color:
+      type: string
+      defaultValue: 'gray'
+      ui:
+        label: 'Container Color'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'column'
+          editor: Content/Inspector/Editors/SelectBoxEditor
+          editorOptions:
+            placeholder: 'Default'
+            values:
+              'background-image':
+                label: 'Background Image'
+              'bg-light-gray':
+                label: 'Light Gray'
+              'white':
+                label: 'White'
+    showInSectionMenu:
+      type: boolean
+      ui:
+        label: 'Show in section menu'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'column'
+
+##
+# A custom "Menu" NodeType for section
+#
+'Unikka.CoworkingHelmstedtDe:SectionMenu':
+  superTypes: ['TYPO3.Neos.NodeTypes:Menu']
+  ui:
+    label: 'Section menu'
+
+##
+# A custom "Content" NodeType for landing pages
+#
+'Unikka.CoworkingHelmstedtDe:Introduction':
+  superTypes: ['TYPO3.Neos:Content']
+  ui:
+    group: 'unikka'
+    label: 'Introduction'
+    inspector:
+      groups:
+        headline:
+          label: 'Headline'
+          position: 1
+  properties:
+    headline:
+      type: string
+      defaultValue: 'Headline'
+      ui:
+        inlineEditable: TRUE
+        label: 'Line One'
+        inspector:
+          group: 'headline'
+    subline:
+      type: string
+      defaultValue: 'Subline'
+      ui:
+        label: 'Line Two'
+        inlineEditable: TRUE
+        inspector:
+          group: 'headline'
+
+##
+# A custom "Structure" timeline container
+#
+'Unikka.CoworkingHelmstedtDe:Timeline':
+  superTypes: ['TYPO3.Neos.NodeTypes:Column']
+  ui:
+    group: 'structure'
+    label: 'Timeline'
+    icon: 'icon-columns'
+    inlineEditable: TRUE
+  childNodes:
+    timelineItems:
+      type: 'TYPO3.Neos:ContentCollection'
+
+##
+# A custom "Content" timeline item
+#
+'Unikka.CoworkingHelmstedtDe:TimelineItem':
+  superTypes: ['TYPO3.Neos:Content']
+  ui:
+    group: 'general'
+    label: 'Timeline Item'
+    inspector:
+      groups:
+        image:
+          label: 'Image'
+          position: 1
+        content:
+          label: 'Inhalt'
+          position: 2
+  properties:
+    pointInTime:
+      type: string
+      defaultValue: 'Zeitpunkt'
+      ui:
+        inlineEditable: TRUE
+        label: 'Zeitpunkt'
+        inspector:
+          group: 'content'
+    headline:
+      type: string
+      defaultValue: 'Überschrift'
+      ui:
+        label: 'Headline'
+        inlineEditable: TRUE
+        inspector:
+          group: 'content'
+    description:
+      type: string
+      defaultValue: 'Description...'
+      ui:
+        label: 'Description'
+        inlineEditable: TRUE
+        inspector:
+          group: 'content'
+    image:
+      type: TYPO3\Media\Domain\Model\ImageVariant
+      ui:
+       label: 'Image'
+       reloadIfChanged: TRUE
+       inspector:
+         group: 'image'
+
+##
+# A custom "Content" NodeType for Team Member
+#
+'Unikka.CoworkingHelmstedtDe:Team':
+  superTypes: ['TYPO3.Neos:Content']
+  ui:
+    group: 'unikka'
+    label: 'Team Member'
+    inspector:
+      groups:
+        image:
+          label: 'Image'
+          position: 1
+        headline:
+          label: 'Headline'
+          position: 2
+        social:
+          label: 'Social Media'
+          position: 3
+  properties:
+    image:
+      type: TYPO3\Media\Domain\Model\ImageVariant
+      ui:
+       label: 'Image'
+       reloadIfChanged: TRUE
+       inspector:
+         group: 'image'
+    name:
+      type: string
+      ui:
+        inlineEditable: TRUE
+        label: 'Name'
+        inspector:
+          group: 'headline'
+    position:
+      type: string
+      ui:
+        label: 'Position'
+        inlineEditable: TRUE
+        inspector:
+          group: 'headline'
+    twitter:
+      type: string
+      ui:
+        label: 'Twitter'
+        inlineEditable: TRUE
+        inspector:
+          group: 'social'
+    facebook:
+      type: string
+      ui:
+        label: 'Facebook'
+        inlineEditable: TRUE
+        inspector:
+          group: 'social'
+    xing:
+      type: string
+      ui:
+        label: 'Xing'
+        inlineEditable: TRUE
+        inspector:
+          group: 'social'
+
+##
+# Adjust the "Form" node type:
+# Remove the empty select option and register the "contact-form"-Form
+#
+'Unikka.CoworkingHelmstedtDe:Form':
+  properties:
+    'formIdentifier':
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              '': ~
+              'contact-form':
+                label: 'Contact form'

@@ -1,0 +1,5 @@
+prototype(Unikka.CoworkingHelmstedtDe:Introduction) < prototype(TYPO3.Neos:Content) {
+	templatePath = 'resource://Unikka.CoworkingHelmstedtDe/Private/Templates/NodeTypes/Introduction.html'
+	headline = ${q(node).property('headline')}
+	subline = ${q(node).property('subline')}
+}

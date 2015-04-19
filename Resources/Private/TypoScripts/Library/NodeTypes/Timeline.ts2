@@ -1,0 +1,20 @@
+##
+# "Timeline" element
+#
+prototype(Unikka.CoworkingHelmstedtDe:Timeline) {
+	templatePath = 'resource://Unikka.CoworkingHelmstedtDe/Private/Templates/NodeTypes/Timeline.html'
+	timelineItems = TYPO3.Neos:ContentCollection {
+		nodePath = 'timelineItems'
+	}
+
+	timelineItemArray = ${q(node).children('timelineItems').find('[instanceof Unikka.CoworkingHelmstedtDe:TimelineItem]').get()}
+}
+
+prototype(Unikka.CoworkingHelmstedtDe:TimelineItem) {
+	templatePath = 'resource://Unikka.CoworkingHelmstedtDe/Private/Templates/NodeTypes/TimelineItem.html'
+	iteration = ${timelineItemsIteration}
+	pointInTime = ${q(node).property('pointInTime')}
+	headline = ${q(node).property('headline')}
+	description = ${q(node).property('description')}
+	image = ${q(node).property('image')}
+}

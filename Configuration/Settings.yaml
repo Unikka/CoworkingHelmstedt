@@ -1,0 +1,31 @@
+TYPO3:
+  Form:
+    yamlPersistenceManager:
+      savePath: 'resource://Unikka.CoworkingHelmstedtDe/Private/Form/'
+    presets:
+      bootstrap:
+        title: 'Twitter bootstrap'
+        parentPreset: 'default'
+        formElementTypes:
+          'TYPO3.Form:Base':
+            renderingOptions:
+              layoutPathPattern: 'resource://Unikka.CoworkingHelmstedtDe/Private/Templates/ContactForm/{@type}.html'
+              partialPathPattern: 'resource://Unikka.CoworkingHelmstedtDe/Private/Templates/ContactForm/{@type}.html'
+          'TYPO3.Form:Section':
+            renderingOptions:
+              templatePathPattern: 'resource://Unikka.CoworkingHelmstedtDe/Private/Templates/ContactForm/{@type}.html'
+          'TYPO3.Form:FormElement':
+            properties:
+              elementClassAttribute: 'form-control'
+          'TYPO3.Form:MultiLineText':
+            properties:
+              elementClassAttribute: 'form-control'
+  Neos:
+    userInterface:
+      editPreviewModes:
+        print:
+          isEditingMode: TRUE
+          isPreviewMode: TRUE
+          typoScriptRenderingPath: 'print'
+          title: 'Print'
+          position: 200

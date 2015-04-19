@@ -1,0 +1,9 @@
+prototype(Unikka.CoworkingHelmstedtDe:Team) < prototype(TYPO3.Neos:Content) {
+	templatePath = 'resource://Unikka.CoworkingHelmstedtDe/Private/Templates/NodeTypes/Team.html'
+	image = ${q(node).property('image')}
+	name = ${q(node).property('name')}
+	position = ${q(node).property('position')}
+	twitter = ${q(node).property('twitter')}
+	facebook = ${q(node).property('facebook')}
+	xing = ${q(node).property('xing')}
+}

@@ -1,0 +1,34 @@
+{namespace media=TYPO3\Media\ViewHelpers}
+<ul class="timeline">
+	<f:for each="{timelineItemArray}" as="item" iteration="itemIterator">
+		<f:if condition="{itemIterator.isLast}">
+			<f:then>
+				<li class="{f:if(condition: '{itemIterator.isEven}', then: 'timeline-inverted', else: '')}">
+					<div class="timeline-image">
+						<h4>{item.properties.headline}</h4>
+					</div>
+				</li>
+			</f:then>
+			<f:else>
+				<li class="{f:if(condition: '{itemIterator.isEven}', then: 'timeline-inverted', else: '')}">
+					<div class="timeline-image">
+						<f:if condition="{item.properties.image}">
+							<f:then>
+								<media:image image="{item.properties.image}" alt="{item.properties.headline}" class="img-circle img-responsive" />
+							</f:then>
+						</f:if>
+					</div>
+					<div class="timeline-panel">
+						<div class="timeline-heading">
+							<h4>{item.properties.pointInTime}</h4>
+							<h4 class="subheading">{item.properties.headline}</h4>
+						</div>
+						<div class="timeline-body">
+							<p class="text-muted">{item.properties.description}</p>
+						</div>
+					</div>
+				</li>
+			</f:else>
+		</f:if>
+	</f:for>
+</ul>

@@ -1,0 +1,14 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+
+<section {attributes -> f:format.raw()}>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12 text-center">
+			<h2 class="section-heading">{header}</h2>
+			<h3 class="section-subheading text-muted">{neos:contentElement.editable(property: 'subheader')}</h3>
+		</div>
+	</div>
+
+	{column0 -> f:format.raw()}
+</div>
+</section>

@@ -1,0 +1,100 @@
+// Global Section Styles
+@import "Timeline";
+@import "TeamMember";
+
+section {
+	padding: 100px 0;
+
+	h2.section-heading {
+		font-size: 40px;
+		margin-top: 0;
+		margin-bottom: 15px;
+	}
+
+	h3.section-subheading {
+		font-size: 16px;
+		@include serif-font();
+		text-transform: none;
+		font-style: italic;
+		font-weight: 400;
+		margin-bottom: 75px;
+	}
+}
+
+@media #{$screen-sm} {
+	section {
+		padding: 150px 0;
+	}
+}
+
+// Services Section
+
+.service-heading {
+	margin: 15px 0;
+	text-transform: none;
+}
+
+// Contact Section
+
+section#contact {
+	background-color: $gray-darkest;
+	background-image: url('../Images/map-image.png');
+	background-position: center;
+	background-repeat: no-repeat;
+
+	.section-heading {
+		color: white;
+	}
+
+	.form-group {
+		margin-bottom: 25px;
+
+		input,
+		textarea {
+			padding: 20px;
+		}
+
+		input.form-control {
+			height: auto;
+		}
+
+		textarea.form-control {
+			height: 236px;
+		}
+	}
+
+	.form-control:focus {
+		border-color: $primary;
+		box-shadow: none;
+	}
+
+	::-webkit-input-placeholder {
+		@include heading-font();
+		font-weight: 700;
+		color: $placeholder-text;
+	}
+
+	:-moz-placeholder {
+		/* Firefox 18- */
+		@include heading-font();
+		font-weight: 700;
+		color: $placeholder-text;
+	}
+
+	::-moz-placeholder {
+		/* Firefox 19+ */
+		@include heading-font();
+		font-weight: 700;
+		color: $placeholder-text;
+	}
+
+	:-ms-input-placeholder {
+		@include heading-font();
+		font-weight: 700;
+		color: $placeholder-text;
+	}
+
+	.text-danger {
+		color: $red;
+	}
+}

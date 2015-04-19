@@ -1,0 +1,10 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	<ul class="nav navbar-nav navbar-right">
+		<f:for each="{items}" as="item">
+			<li>
+				<a href="#{item.identifier}" class="page-scroll">{item.properties.title}</a>
+			</li>
+		</f:for>
+	</ul>
+</div>

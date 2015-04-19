@@ -1,0 +1,9 @@
+{namespace form=TYPO3\Form\ViewHelpers}
+<div class="col-md-6">
+	<f:if condition="{section.label}">
+		<legend>{section.label}</legend>
+	</f:if>
+	<f:for each="{section.elements}" as="element">
+		<form:renderRenderable renderable="{element}" />
+	</f:for>
+</div>

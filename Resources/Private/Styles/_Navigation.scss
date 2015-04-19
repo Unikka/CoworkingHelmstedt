@@ -1,0 +1,89 @@
+.navbar-default {
+	background-color: $gray-darkest;
+	border-color: transparent;
+
+	.navbar-brand {
+		color: $primary;
+		@include script-font();
+		&:hover,
+		&:focus,
+		&:active,
+		&.active {
+			color: darken($primary, 10%);
+		}
+	}
+
+	.navbar-collapse {
+		border-color: fade(white, 2%);
+	}
+
+	.navbar-toggle {
+		background-color: $primary;
+		border-color: $primary;
+		.icon-bar {
+			background-color: white;
+		}
+		&:hover,
+		&:focus {
+			background-color: $primary;
+		}
+	}
+
+	.nav {
+		li {
+			a {
+				@include heading-font();
+				font-weight: 400;
+				letter-spacing: 1px;
+				color: white;
+				&:hover,
+				&:focus {
+					color: $primary;
+					outline: none;
+				}
+			}
+		}
+	}
+
+	.navbar-nav > .active > a {
+		border-radius: 0;
+		color: white;
+		background-color: $primary;
+	}
+
+	.navbar-nav > .active > a:hover,
+	.navbar-nav > .active > a:focus {
+		color: white;
+		background-color: darken($primary, 10%);
+	}
+}
+
+@media #{$screen-sm} {
+	.navbar-default {
+		background-color: rgba(0,0,0,0.5);
+		padding: 25px 0;
+		-webkit-transition: padding 0.3s;
+		-moz-transition: padding 0.3s;
+		transition: padding 0.3s;
+		border: none;
+
+		.navbar-brand {
+			font-size: 2em;
+			-webkit-transition: all 0.3s;
+			-moz-transition: all 0.3s;
+			transition: all 0.3s;
+		}
+
+		.navbar-nav > .active > a {
+			border-radius: 3px;
+		}
+	}
+	.navbar-default.navbar-shrink {
+		background-color: $gray-darkest;
+		padding: 10px 0;
+
+		.navbar-brand {
+			font-size: 1.5em;
+		}
+	}
+}

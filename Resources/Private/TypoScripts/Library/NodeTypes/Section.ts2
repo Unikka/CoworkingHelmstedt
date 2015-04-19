@@ -1,0 +1,12 @@
+prototype(Unikka.CoworkingHelmstedtDe:Section) < prototype(TYPO3.Neos:Content) {
+	templatePath = 'resource://Unikka.CoworkingHelmstedtDe/Private/Templates/NodeTypes/Section.html'
+	attributes.class = ${String.toLowerCase(q(node).property('color'))}
+	attributes.id = ${String.toLowerCase(q(node).property('title'))}
+	header = ${q(node).property('header')}
+	subheader = ${q(node).property('subheader')}
+	showInSectionMenu = ${q(node).property('showInSectionMenu')}
+	test = ${q(node).property('title')}
+	column0 = TYPO3.Neos:ContentCollection {
+		nodePath = 'column0'
+	}
+}

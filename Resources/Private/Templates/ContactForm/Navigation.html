@@ -1,0 +1,6 @@
+<div class="clearfix"></div>
+<div class="col-lg-12 text-center">
+	<f:form.button name="__currentPage" value="{form.pages -> f:count()}" class="btn btn-xl">
+		{f:if(condition:form.renderingOptions.submitButtonLabel, then:form.renderingOptions.submitButtonLabel, else: 'Submit')}
+	</f:form.button>
+</div>

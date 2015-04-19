@@ -1,0 +1,21 @@
+##
+# Adjust "ContentCollection" element to container CSS classes
+#
+prototype(TYPO3.Neos:ContentCollection) < prototype(TYPO3.Neos:Content) {
+	attributes.class = 'content-collection'
+}
+
+##
+# Adjust "MultiColumn" element to Twitter bootstrap CSS classes
+#
+prototype(TYPO3.Neos.NodeTypes:MultiColumn) {
+	attributes.class = 'row'
+	columns.iterationName = 'multiColumnIteration'
+}
+
+##
+# Adjust "MultiColumnItem" element to Twitter bootstrap CSS classes
+#
+prototype(TYPO3.Neos.NodeTypes:MultiColumnItem) {
+	attributes.class = ${'col-sm-' + String.split(q(node).parent().property('layout'), '-')[multiColumnIteration.index]}
+}

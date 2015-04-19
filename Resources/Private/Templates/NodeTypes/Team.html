@@ -1,0 +1,36 @@
+{namespace media=TYPO3\Media\ViewHelpers}
+{namespace neos=TYPO3\Neos\ViewHelpers}
+
+<div class="team-member">
+	<f:if condition="{image}">
+		<media:image image="{image}" alt="{image.title}" class="img-circle img-responsive" />
+	</f:if>
+
+	<h4>{neos:contentElement.editable(property: 'name')}</h4>
+
+	<p class="text-muted">{neos:contentElement.editable(property: 'position')}</p>
+
+	<ul class="list-inline social-buttons">
+		<f:if condition="{twitter}">
+			<li>
+				<a href="{twitter}" target="_blank">
+					<i class="icon-twitter"></i>
+				</a>
+			</li>
+		</f:if>
+		<f:if condition="{facebook}">
+			<li>
+				<a href="{facebook}" target="_blank">
+					<i class="icon-facebook"></i>
+				</a>
+			</li>
+		</f:if>
+		<f:if condition="{xing}">
+			<li>
+				<a href="{xing}" target="_blank">
+					<i class="icon-xing"></i>
+				</a>
+			</li>
+		</f:if>
+	</ul>
+</div>

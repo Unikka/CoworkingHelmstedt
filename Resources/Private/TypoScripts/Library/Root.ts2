@@ -1,0 +1,63 @@
+include: NodeTypes/Section.ts2
+include: NodeTypes/Introduction.ts2
+include: NodeTypes/Overrides.ts2
+include: NodeTypes/Timeline.ts2
+include: NodeTypes/Team.ts2
+include: NodeTypes/Form.ts2
+
+
+/**
+* Root TypoScript template for the Coworking Helmstedt site
+*/
+page = Page {
+	head {
+		stylesheets.site = TYPO3.TypoScript:Template {
+			templatePath = 'resource://Unikka.CoworkingHelmstedtDe/Private/Templates/Page/Default.html'
+			sectionName = 'stylesheets'
+		}
+
+		javascripts.site = TYPO3.TypoScript:Template {
+			templatePath = 'resource://Unikka.CoworkingHelmstedtDe/Private/Templates/Page/Default.html'
+			sectionName = 'headScripts'
+		}
+
+		meta = TYPO3.TypoScript:Template {
+			templatePath = 'resource://Unikka.CoworkingHelmstedtDe/Private/Templates/Page/Default.html'
+			sectionName = 'meta'
+		}
+
+		title = TYPO3.TypoScript:Template {
+			templatePath = 'resource://Unikka.CoworkingHelmstedtDe/Private/Templates/TypoScriptObjects/TitleMenu.html'
+			items = ${Array.reverse(Array.slice(q(node).add(q(node).parents()).get(),0, -1))}
+			@process.1 = ${'<title>' + value + '</title>'}
+		}
+	}
+
+	bodyTag.attributes.id = 'page-top'
+	body {
+		templatePath = 'resource://Unikka.CoworkingHelmstedtDe/Private/Templates/Page/Default.html'
+		sectionName = 'body'
+		parts {
+			menu = Menu {
+				templatePath = 'resource://Unikka.CoworkingHelmstedtDe/Private/Templates/TypoScriptObjects/Menu.html'
+				maximumLevels = 2
+				entryLevel = 1
+			}
+		}
+
+		content {
+			main = PrimaryContent {
+				nodePath = 'main'
+			}
+
+			sectionMenu = ContentCollection {
+				nodePath = 'sectionMenu'
+			}
+		}
+
+		javascripts.site = TYPO3.TypoScript:Template {
+			templatePath = 'resource://Unikka.CoworkingHelmstedtDe/Private/Templates/Page/Default.html'
+			sectionName = 'bodyScripts'
+		}
+	}
+}
